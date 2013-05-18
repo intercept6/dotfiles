@@ -1,12 +1,25 @@
-## TERM
+###########
+##       ##
+## TERM  ##
+##       ##
+###########
 
-if grep '^uim-fep' /proc/$PPID/cmdline > /dev/null; then
+
+# fbrerm status check & rum uim-fep
+if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
 	export TERM=xterm
+	uim-fep
 fi
 
 case $TERM in
  linux)
-	 fbterm uim-fep --vesa-mode=323
+	 case $HOSTNAME in
+		 "debian")
+				 fbterm
+		 ;;
+	 *)
+		;;
+	esac
  ;;
  xterm)
 	precmd(){

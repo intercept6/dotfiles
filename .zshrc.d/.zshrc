@@ -15,7 +15,7 @@ case $TERM in
  linux)
 	 case $HOSTNAME in
 		 "debian")
-				 fbterm
+			 	 fbterm --vesa-mode=323
 		 ;;
 	 *)
 		;;

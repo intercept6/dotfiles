@@ -1,16 +1,12 @@
-###########
-##       ##
-## TERM  ##
-##       ##
-###########
+### TERM ###
 
-
-# fbrerm status check & rum uim-fep
+## fbrerm status check & rum uim-fep ##
 if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
 	export TERM=xterm
 	uim-fep
 fi
 
+## TERM check ##
 case $TERM in
  linux)
 	 case $HOSTNAME in
@@ -29,37 +25,10 @@ case $TERM in
  ;;
 esac
 
-
-######################
-##                  ##
-##  File Operation  ##
-##                  ##
-######################
-
-autoload -U compinit && compinit
-setopt auto_cd
-setopt auto_pushd
-setopt correct
-setopt magic_equal_subst
-setopt nobeep
-setopt prompt_subst
-setopt list_packed
-setopt print_eight_bit
-setopt no_flow_control
-zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-zstyle ':completion:*:default' menu select=1
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
-
-
-
-##############
-##          ##
-##  PROMPT  ##
-##          ##
-##############
+### PROMPT ###
 
 autoload -U colors && colors
-# root user is red another grenn
+
 case $UID in
 0)
 	PROMPT='[%F{red}%n%f@%F{cyan}%m%f(%T)]%# '
@@ -71,7 +40,6 @@ case $UID in
 
 esac
 
-#public
 	PROMPT2=" > "
 	RPROMPT='[%F{green}%d%f]'
 	SPROMPT="correct '%R' to '%r'
@@ -82,34 +50,58 @@ esac
 (please select n,y,a.e)>"
 
 
+### File Operation ###
 
+## General ##
 
+setopt auto_cd				#ディレクトリ名の入力のみで'cd'として認識
+setopt auto_pushd			#cd -[TAB]でディレクリ履歴を表示
+setopt correct				#コマンドスペルを修正
+setopt magic_equal_subst		#=以降も補完する(--prefix=/usrなど)
+setopt nobeep				#beep音を無効にする
+setopt prompt_subst			#プロンプト定義内で変数置換やコマンド置換を扱う
+setopt print_eight_bit
+setopt no_flow_control
 
-###############
-##           ##
-##  HISTORY  ##
-##           ##
-###############
+## Complement ##
+
+autoload -U compinit && compinit	#補完機能を有効にする
+setopt auto_menu
+setopt list_packed
+setopt list_types
+bindkey '^[[Z' reverse-menu-complete
+zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+
+## Glob ##
+setopt extended_glob # グロブ機能を拡張する
+unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
+
+###  HISTORY ###
+
+## history file ##
 
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
-setopt extended_history
-setopt hist_ignore_dups #ignore duplication command history list
-setopt share_history    #share command history data
+## General ##
+
+setopt extended_history		#
+setopt hist_ignore_dups		#ignore duplication command history list
+setopt share_history		#share command history data
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+## Command ##
+function history-all { history -E 1 }
 
-#####################
-##                 ##
-##  ALIAS COMMAND  ##
-##                 ##
-#####################
+
+### ALIAS COMMAND ###
 
 setopt complete_aliases
 #alias ls="ls -G -w"
@@ -128,6 +120,7 @@ alias vi="vim"
 #alias bs="brew -S"
 #alias bi="brew info"
 
+
 #######################
 ##                   ##
 ##  zsh-completions  ##
@@ -135,6 +128,7 @@ alias vi="vim"
 #######################
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+
 
 ######################################
 ##                                  ##

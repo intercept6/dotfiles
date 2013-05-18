@@ -1,0 +1,9 @@
+[alias]
+    current-branch-name = ! git branch | grep -e '^\\* ' | sed -e 's/^\\* //g'
+    force-pull = !git fetch && git reset --hard origin/$(git current-branch-name)
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master

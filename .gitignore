@@ -1,0 +1,8 @@
+.envrc
+.env
+.node_modules
+.idea
+.DS_Store
+*.iml
+.tmp
+.memo

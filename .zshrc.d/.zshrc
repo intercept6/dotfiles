@@ -10,7 +10,6 @@ export AUTOFEATURE=true  # autotestでfeatureを動かす
 ## Color Config
 
 export LSCOLORS=ExFxCxdxBxegedabagacad
-#export LSCOLORS=exfxcxdxbxegedabagacad
 export LS_COLORS
 eval $(dircolors ~/.dircolors)
 export ZLS_COLORS=$LS_COLORS

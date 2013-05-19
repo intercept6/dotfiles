@@ -138,6 +138,66 @@ alias vi="vim"
 #alias bs="brew -S"
 #alias bi="brew info"
 
+
+#compfile
+function extract() {
+case $1 in
+     *.tar.gz|*.tgz) tar xzvf $1;;
+     *.tar.xz) tar Jxvf $1;;
+     *.zip) unzip $1;;
+     *.lzh) lha e $1;;
+     *.tar.bz2|*.tbz) tar xjvf $1;;
+     *.tar.Z) tar zxvf $1;;
+     *.gz) gzip -dc $1;;
+     *.bz2) bzip2 -dc $1;;
+     *.Z) uncompress $1;;
+     *.tar) tar xvf $1;;
+     *.arj) unarj $1;;
+esac
+}
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+#global alias
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g CA="2>&1 | cat -A"
+alias -g C='| wc -l'
+alias -g D="DISPLAY=:0.0"
+alias -g DN=/dev/null
+alias -g ED="export DISPLAY=:0.0"
+alias -g EG='|& egrep'
+alias -g EH='|& head'
+alias -g EL='|& less'
+alias -g ELS='|& less -S'
+alias -g ETL='|& tail -20'
+alias -g ET='|& tail'
+alias -g F=' | fmt -'
+alias -g G='| egrep'
+alias -g H='| head'
+alias -g HL='|& head -20'
+alias -g Sk="*~(*.bz2|*.gz|*.tgz|*.zip|*.z)"
+alias -g LL="2>&1 | less"
+alias -g L="| less"
+alias -g LS='| less -S'
+alias -g MM='| most'
+alias -g M='| more'
+alias -g NE="2> /dev/null"
+alias -g NS='| sort -n'
+alias -g NUL="> /dev/null 2>&1"
+alias -g PIPE='|'
+alias -g R=' > /c/aaa/tee.txt '
+alias -g RNS='| sort -nr'
+alias -g S='| sort'
+alias -g TL='| tail -20'
+alias -g T='| tail'
+alias -g US='| sort -u'
+alias -g X0G='| xargs -0 egrep'
+alias -g X0='| xargs -0'
+alias -g XG='| xargs egrep'
+alias -g X='| xargs''
+
+
 ###
 ###  zsh-completions
 ###

@@ -34,13 +34,14 @@ fi
 ## TERM check ##
 case $TERM in
  linux)
-	 case $HOSTNAME in
-		 "debian")
-			 	 fbterm --vesa-mode=323
-		 ;;
-	 *)
-		;;
-	esac
+	##  case $HOSTNAME in
+	##	 "debian")
+	##		 	 fbterm --vesa-mode=323
+	##	 ;;
+	## *)
+	##	;;
+	##esac
+	export LANG=C
  ;;
  xterm)
 	precmd(){

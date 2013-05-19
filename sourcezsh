@@ -1,6 +1,0 @@
-#!/bin/sh
-
-
-source ~/.zshenv
-source ~/.zshrc.d/.zshrc
-source ~/.zshrc.d/.zprofile

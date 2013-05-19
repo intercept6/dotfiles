@@ -86,7 +86,7 @@ setopt auto_menu
 setopt list_packed
 setopt list_types
 bindkey '^[[Z' reverse-menu-complete
-zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+#zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
@@ -123,9 +123,8 @@ function history-all { history -E 1 }
 ###
 
 setopt complete_aliases
-#alias ls="ls -G -w"
+alias ls="ls --color=auto -F"
 alias la="ls -a"
-alias lf="ls -F"
 alias ll="la -lh"
 #alias du="du -h"
 alias df="df -h"

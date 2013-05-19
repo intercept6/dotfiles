@@ -1,4 +1,26 @@
 ###
+### GENERAL
+###
+
+## Language Config
+export LANG=ja_JP.UTF-8
+export KCODE=u           # KCODEにUTF-8を設定
+export AUTOFEATURE=true  # autotestでfeatureを動かす
+
+## Color Config
+
+export LSCOLORS=ExFxCxdxBxegedabagacad
+#export LSCOLORS=exfxcxdxbxegedabagacad
+export LS_COLORS
+eval $(dircolors ~/.dircolors)
+export ZLS_COLORS=$LS_COLORS
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# Set HostName
+export HOSTNAME=$HOST
+
+
+###
 ### TERM
 ###
 

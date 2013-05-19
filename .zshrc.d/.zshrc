@@ -161,6 +161,10 @@ alias vi="vim"
 #alias bi="brew info"
 
 
+## suffix
+
+alias -s py=python
+
 #compfile
 function extract() {
 case $1 in

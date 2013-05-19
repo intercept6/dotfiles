@@ -1,6 +1,10 @@
-### TERM ###
+###
+### TERM
+###
+
 
 ## fbrerm status check & rum uim-fep ##
+
 if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
 	export TERM=xterm
 	uim-fep
@@ -25,32 +29,44 @@ case $TERM in
  ;;
 esac
 
-### PROMPT ###
+###
+### PROMPT
+###
 
 autoload -U colors && colors
 
-case $UID in
-0)
-	PROMPT='[%F{red}%n%f@%F{cyan}%m%f(%T)]%# '
-
- ;;
-*)
-	PROMPT='[%F{green}%n%f@%F{cyan}%m%f:%T]%# '
- ;;
-
-esac
-
-	PROMPT2=" > "
-	RPROMPT='[%F{green}%d%f]'
-	SPROMPT="correct '%R' to '%r'
+p_HostName="@%F{cyan}%m%f"
+p_Date="(%T)"
+p_UserPermissions="%# "
+p_Pwd="[%F{green}%d%f]"
+p_correct="correct '%R' to '%r'
  No
  Yes
  Abort
  Edit
 (please select n,y,a.e)>"
+p_CmdResult="%(?.%F{green}Command Succes%f.%F{red}Command Faild%f)
+"
 
+case $UID in
+0)
+	p_UserName="%F{red}%n%f"
 
-### File Operation ###
+ ;;
+*)
+	p_UserName="%F{green}%n%f"
+ ;;
+
+esac
+
+	PROMPT=$p_CmdResult"["$p_UserName$p_HostName$p_Date"]"$p_UserPermissions	
+	PROMPT2=" > "
+	RPROMPT=$p_Pwd
+	SPROMPT=$p_correct
+
+###
+### File Operation
+###
 
 ## General ##
 
@@ -78,7 +94,9 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 setopt extended_glob # グロブ機能を拡張する
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
 
-###  HISTORY ###
+###
+###  HISTORY
+###
 
 ## history file ##
 
@@ -100,8 +118,9 @@ bindkey "^N" history-beginning-search-forward-end
 ## Command ##
 function history-all { history -E 1 }
 
-
-### ALIAS COMMAND ###
+###
+### ALIAS COMMAND
+###
 
 setopt complete_aliases
 #alias ls="ls -G -w"
@@ -120,21 +139,16 @@ alias vi="vim"
 #alias bs="brew -S"
 #alias bi="brew info"
 
-
-#######################
-##                   ##
-##  zsh-completions  ##
-##                   ##
-#######################
+###
+###  zsh-completions
+###
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 
-######################################
-##                                  ##
-##  source zsh-syntax-highlighting  ##
-##                                  ##
-######################################
+###
+### source zsh-syntax-highlighting
+###
 
 [[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

@@ -94,6 +94,7 @@ set wildmenu
 if has('mouse')
   set mouse=a
 endif
+autocmd FileType * setlocal formatoptions-=ro
 " pluginを使用可能にする
 filetype plugin indent on
 

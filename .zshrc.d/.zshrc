@@ -20,73 +20,6 @@ export HOSTNAME=$HOST
 
 
 ###
-### TERM
-###
-
-
-## fbrerm status check & rum uim-fep ##
-
-if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
-	export TERM=xterm
-	uim-fep
-fi
-
-## TERM check ##
-case $TERM in
- linux)
-	##  case $HOSTNAME in
-	##	 "debian")
-	##		 	 fbterm --vesa-mode=323
-	##	 ;;
-	## *)
-	##	;;
-	##esac
-	export LANG=C
- ;;
- xterm)
-	precmd(){
-	 print -Pn "\e]2;[%n@%m]\a"
-	}
-	
- ;;
-esac
-
-###
-### PROMPT
-###
-
-autoload -U colors && colors
-
-p_HostName="@%F{cyan}%m%f"
-p_Date="(%T)"
-p_UserPermissions="%# "
-p_Pwd="[%F{green}%d%f]"
-p_correct="correct '%R' to '%r'
- No
- Yes
- Abort
- Edit
-(please select n,y,a.e)>"
-p_CmdResult="%(?.%F{green}Command Succes%f.%F{red}Command Faild%f)
-"
-
-case $UID in
-0)
-	p_UserName="%F{red}%n%f"
-
- ;;
-*)
-	p_UserName="%F{green}%n%f"
- ;;
-
-esac
-
-	PROMPT=$p_CmdResult"["$p_UserName$p_HostName$p_Date"]"$p_UserPermissions	
-	PROMPT2=" > "
-	RPROMPT=$p_Pwd
-	SPROMPT=$p_correct
-
-###
 ### File Operation
 ###
 
@@ -237,4 +170,82 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 [[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+###
+### TERM
+###
 
+
+## fbrerm status check & rum uim-fep ##
+
+if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
+	export TERM=xterm
+	uim-fep
+fi
+
+
+
+###
+### PROMPT
+###
+
+autoload -U colors && colors
+
+p_HostName="@%F{cyan}%m%f"
+p_Date="(%T)"
+p_UserPermissions="%# "
+p_Pwd="[%F{green}%d%f]"
+p_correct="correct '%R' to '%r'
+ No
+ Yes
+ Abort
+ Edit
+(please select n,y,a.e)>"
+p_CmdResult="%(?.%F{green}Command Succes%f.%F{red}Command Faild%f)
+"
+
+case $UID in
+0)
+	p_UserName="%F{red}%n%f"
+
+ ;;
+*)
+	p_UserName="%F{green}%n%f"
+ ;;
+
+esac
+
+	PROMPT=$p_CmdResult"["$p_UserName$p_HostName$p_Date"]"$p_UserPermissions	
+	PROMPT2=" > "
+	RPROMPT=$p_Pwd
+	SPROMPT=$p_correct
+
+## TERM check ##
+case $TERM in
+ linux)
+	##  case $HOSTNAME in
+	##	 "debian")
+	##		 	 fbterm --vesa-mode=323
+	##	 ;;
+	## *)
+	##	;;
+	##esac
+	export LANG=C
+ ;;
+ xterm)
+	screen
+	precmd(){
+	 print -Pn "\e]2;[%n@%m]\a"
+	}
+ ;;
+ screen*)
+        preexec() {
+		echo -ne "\ek$1\e\\"
+	}
+	precmd() {
+		echo -ne "\ek$(basename $SHELL)@$USER\e\\"
+	 	print -Pn "\e]2;[%n@%m]\a"
+
+	}
+	;;
+ 
+esac

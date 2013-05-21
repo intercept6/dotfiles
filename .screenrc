@@ -33,8 +33,9 @@ msgminwait 1
 
 # hardstatus and caption
 hardstatus on
-hardstatus alwayslastline '%{= .b}%{-} %L=%-w%45L>%{= b.}%n %t%{-}%+w %+Lw%-040=%{b km}(%l)%{.b} %Y/%m/%d(%D) %c'
+#hardstatus alwayslastline '%{= .b}%{-} %L=%-w%45L>%{= b.}%n %t%{-}%+w %+Lw%-040=%{b km}(%l)%{.b} %Y/%m/%d(%D) %c'
 #hardstatus alwayslastline "%{= kb}%{-} %-Lw%40L>%{b wk} (%n)%t %+Lw%-040=%{b km} %l %{.b} %Y/%m/%d(%D) %c"
+hardstatus alwayslastline '%L=%-w%45L>%{=u b.}%n %t%{-}%+w %-17<%=(%l) %Y/%m/%d %02c:%s'
 caption always '%?%F%{= bw}%:%{= wk}%?%t%='
 #caption always '%{= bw} %h'
 sorendition '+r .b'

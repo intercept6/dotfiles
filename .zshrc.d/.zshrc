@@ -1,6 +1,3 @@
-screen -xR
-
-
 ###
 ### GENERAL
 ###
@@ -226,9 +223,10 @@ esac
 case $TERM in
  linux)
 	export LANG=C
+	screen -xR
  ;;
  xterm)
-
+	screen -xR
  ;;
  screen*)
         preexec() {

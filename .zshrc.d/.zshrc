@@ -16,7 +16,7 @@ export ZLS_COLORS=$LS_COLORS
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Set HostName
-export HOSTNAME=$HOST
+#export HOSTNAME=$HOST
 
 
 ###
@@ -232,7 +232,7 @@ case $TERM in
 	export LANG=C
  ;;
  xterm)
-	screen
+	screen -xR
 	precmd(){
 	 print -Pn "\e]2;[%n@%m]\a"
 	}

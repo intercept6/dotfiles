@@ -1,3 +1,6 @@
+screen -xR
+
+
 ###
 ### GENERAL
 ###
@@ -222,20 +225,10 @@ esac
 ## TERM check ##
 case $TERM in
  linux)
-	##  case $HOSTNAME in
-	##	 "debian")
-	##		 	 fbterm --vesa-mode=323
-	##	 ;;
-	## *)
-	##	;;
-	##esac
 	export LANG=C
  ;;
  xterm)
-	screen -xR
-	precmd(){
-	 print -Pn "\e]2;[%n@%m]\a"
-	}
+
  ;;
  screen*)
         preexec() {

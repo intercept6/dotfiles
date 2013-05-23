@@ -230,7 +230,7 @@ case $TERM in
  ;;
  screen*)
         preexec() {
-		echo -ne "\ek$1\e\\"
+		echo -ne "\ek$1@$USER\e\\"
 	}
 	precmd() {
 		echo -ne "\ek$(basename $SHELL)@$USER\e\\"

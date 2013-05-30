@@ -62,7 +62,7 @@ SAVEHIST=100000
 ## General ##
 
 setopt extended_history		#
-setopt hist_ignore_dups		#ignore duplication command history list
+setopt hist_ignore_all_dups		#ignore duplication command history list
 setopt share_history		#share command history data
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -92,7 +92,7 @@ alias vi="vim"
 #alias brug="brew upgrade"
 #alias bs="brew -S"
 #alias bi="brew info"
-
+alias ufw status ="ufw status numbered"
 
 ## suffix
 

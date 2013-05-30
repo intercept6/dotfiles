@@ -92,7 +92,6 @@ alias vi="vim"
 #alias brug="brew upgrade"
 #alias bs="brew -S"
 #alias bi="brew info"
-alias ufw status="ufw status numbered"
 
 ## suffix
 

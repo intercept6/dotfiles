@@ -63,7 +63,7 @@ SAVEHIST=100000
 ## General ##
 
 setopt extended_history		# ヒストリに実行時間を記録する
-#setopt hist_ignore_all_dups	# 重複したコマンドを削除(古い方を削除する)
+setopt hist_ignore_all_dups	# 重複したコマンドを削除(古い方を削除する)
 setopt share_history		# 他の端末とヒストリをリアルタイムで共有する
 
 # ヒストリから検索する

@@ -171,7 +171,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 ### source zsh-syntax-highlighting
 ###
 
-[[ -f ~/.zshrc.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zshrc.d/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f ~/.zshrc.d/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && . ~/.zshrc.d/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ###
 ### TERM

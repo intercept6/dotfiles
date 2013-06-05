@@ -81,7 +81,7 @@ function history-all { history -E 1 }
 ###
 
 setopt complete_aliases
-alias ls="ls --color=auto -F"
+alias ls="ls --color -F"
 alias la="ls -a"
 alias ll="la -lh"
 #alias du="du -h"

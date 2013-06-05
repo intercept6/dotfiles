@@ -142,7 +142,7 @@ set showmatch matchtime=1
 " タブを設定
 " set ts=4 sw=4 sts=4
 " 自動的にインデントする
-set autoindent
+"set autoindent
 " Cインデントの設定
 set cinoptions+=:0
 " タイトルを表示

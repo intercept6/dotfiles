@@ -197,7 +197,8 @@ setopt print_exit_value		#コマンドの戻り値が0以外の時、コマン�
 p_HostName="@%F{cyan}%m%f"
 p_Date="(%T)"
 p_UserPermissions="%# "
-p_Pwd="[%F{green}%d%f]"
+p_Pwd="[%F{yellow}%d%f]
+"
 p_correct="correct '%R' to '%r'
  No
  Yes
@@ -218,9 +219,9 @@ case $UID in
 esac
 
 	#PROMPT=$p_CmdResult"["$p_UserName$p_HostName$p_Date"]"$p_UserPermissions	
-	PROMPT="["$p_UserName$p_HostName$p_Date"]"$p_UserPermissions	
+	PROMPT=$p_UserName$p_HostName$p_Date$p_Pwd$p_UserPermissions
 	PROMPT2=" > "
-	RPROMPT=$p_Pwd
+	#RPROMPT=$p_Pwd
 	SPROMPT=$p_correct
 
 ## TERM check ##

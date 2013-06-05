@@ -60,8 +60,7 @@ bind -c operate l eval 'focus right' 'command -c operate'
 #bind -c operate + eval 'resize -h =' 'command -c operate'
 bind -c operate s eval 'split' 'command -c operate'
 bind -c operate c eval 'screen' 'command -c operate'
-#bind -c operate x eval 'remove' 'command -c operate'
-bind -c operate x remove 'commadn -c operate'
+bind -c operate x eval 'remove' 'command -c operate'
 bind -c operate v eval 'split -v' 'command -c operate'
 bind -c operate 0 eval 'select 0' 'command -c operate'
 bind -c operate 1 eval 'select 1' 'command -c operate'
@@ -77,11 +76,9 @@ bind -c operate 9 eval 'select 9' 'command -c operate'
 #キーバインド
 bind t eval 'title'
 bind w eval 'windowlist'
-
 bind v eval 'split -v' focus screen
 bind s eval 'split' focus screen
-#bind x eval 'remove'
-bind x remove
+bind x eval 'remove'
 bind q eval 'only'
 bind k eval 'focus down'
 bind i eval 'focus up'

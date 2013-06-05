@@ -56,7 +56,7 @@ unsetopt caseglob    # ファイルグロブで大文字小文字を区別しな
 
 ## history file ##
 
-HISTFILE=$HOME/.zsh_history
+HISTFILE=$HOME/.zshrc.d/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 

@@ -35,7 +35,7 @@ setopt no_flow_control			# フロー制御を無効にする
 
 ## Complement ##
 
-autoload -U compinit && compinit -u -d ~/.zcompdump	# 補完機能を有効にする
+autoload -U compinit && compinit	# 補完機能を有効にする
 #compinit -d $HOME.zcompdump		# .zcompdumpの保存場所
 setopt auto_menu			# TABキーで補完候補を選択
 bindkey '^[[Z' reverse-menu-complete	# Ctrl+Zキーで補完候補を逆順で選択

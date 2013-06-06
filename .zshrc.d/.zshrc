@@ -158,6 +158,11 @@ alias -g X0='| xargs -0'
 alias -g XG='| xargs egrep'
 alias -g X='| xargs'
 
+###
+###  My Functions
+###
+
+function ufwsn {ufw status numbered} 
 
 ###
 ###  zsh-completions

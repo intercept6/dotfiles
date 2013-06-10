@@ -235,11 +235,11 @@ esac
 
 ## TERM check ##
 case $TERM in
- linux)
+ linux*)
 	export LANG=C
 	screen -xR
  ;;
- xterm)
+ xterm*)
 	screen -xR
  ;;
  screen*)

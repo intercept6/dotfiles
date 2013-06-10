@@ -105,6 +105,10 @@ bind 9 eval 'select 9'
 #^t h との誤爆を防ぐために^t ^hは無効にする
 bind ^h
 
-bindkey [2~ 'focus'
+termcapinfo linux ti@:te@
+termcapinfo xterm ti@:te@
+termcapinfo xterm-color ti@:te@
+
+#bindkey [2~ 'focus'
 
 

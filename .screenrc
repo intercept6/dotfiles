@@ -106,7 +106,7 @@ bind 9 eval 'select 9'
 bind ^h
 
 termcapinfo linux ti@:te@
-termcapinfo xterm ti@:te@
+termcapinfo xterm* ti@:te@
 termcapinfo xterm-color ti@:te@
 
 #bindkey [2~ 'focus'

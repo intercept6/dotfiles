@@ -237,10 +237,10 @@ esac
 case $TERM in
  linux*)
 	export LANG=C
-	screen -xR
+	#screen -xR
  ;;
  xterm*)
-	screen -xR
+	#screen -xR
  ;;
  screen*)
         preexec() {

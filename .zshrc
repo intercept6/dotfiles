@@ -1,7 +1,7 @@
 #################################################
 # Private Functions
 #################################################
-
+# install homebrew
 if [[ ! commands[brew] ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
@@ -12,20 +12,32 @@ function install_brews_app() {
   fi
 }
 
-# autoload -Uz compinit && compinit -u
-# autoload -U +X bashcompinit && bashcompinit
-# compinit
-# zstyle ':completion:*:default' menu select=1
-# setopt menu_complete
-# --------------
-# cdr関連の設定
-# --------------
-# setopt AUTO_PUSHD # cdしたら自動でディレクトリスタックする
-# setopt pushd_ignore_dups # 同じディレクトリは追加しない
-# DIRSTACKSIZE=100 # スタックサイズ
-# # cdr, add-zsh-hook を有効にする
-# autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-# add-zsh-hook chpwd chpwd_recent_dirs
+#################################################
+# Global Functions
+#################################################
+# history
+install_brews_app fzf
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+# ghq
+install_brews_app ghq
+function ghq-fzf() {
+  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
+
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd $(ghq root)/${selected_dir}"
+    zle accept-line
+  fi
+
+  zle reset-prompt
+}
+zle -N ghq-fzf
+bindkey "^]" ghq-fzf
 
 #################################################
 # History's config
@@ -78,12 +90,8 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(time ssh context dir vcs aws pyenv virtualenv rbenv nodeenv)
-# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(public_ip ram load newline status)
-# POWERLEVEL9K_STATUS_VERBOSE=true
-# POWERLEVEL9K_MODE=RictyDiscordForPowerline-Regular
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #################################################
 # Alias
@@ -112,33 +120,6 @@ bindkey '[C' forward-word
 bindkey '[D' backward-word
 
 #################################################
-# Global Functions
-#################################################
-# history
-install_brews_app fzf
-function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-  CURSOR=$#BUFFER
-}
-zle -N select-history
-bindkey '^r' select-history
-
-# ghq
-install_brews_app ghq
-function ghq-fzf() {
-  local selected_dir=$(ghq list | fzf --query="$LBUFFER")
-
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd $(ghq root)/${selected_dir}"
-    zle accept-line
-  fi
-
-  zle reset-prompt
-}
-zle -N ghq-fzf
-bindkey "^]" ghq-fzf
-
-#################################################
 # Tools
 #################################################
 # anyenv
@@ -148,9 +129,25 @@ if [[ ! -d ~/.anyenv ]]; then
 fi
 eval "$(anyenv init -)"
 
+if [[ -d $(pyenv root) ]]; then
+  export PIPENV_VENV_IN_PROJECT=1
+fi
+
 # direnv
 install_brews_app direnv
 eval "$(direnv hook zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# autoload -Uz compinit && compinit -u
+# autoload -U +X bashcompinit && bashcompinit
+# compinit
+# zstyle ':completion:*:default' menu select=1
+# setopt menu_complete
+# --------------
+# cdr関連の設定
+# --------------
+# setopt AUTO_PUSHD # cdしたら自動でディレクトリスタックする
+# setopt pushd_ignore_dups # 同じディレクトリは追加しない
+# DIRSTACKSIZE=100 # スタックサイズ
+# # cdr, add-zsh-hook を有効にする
+# autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+# add-zsh-hook chpwd chpwd_recent_dirs

@@ -141,3 +141,5 @@ function ghq-fzf() {
 }
 zle -N ghq-fzf
 bindkey "^]" ghq-fzf
+
+alias aws='docker run --rm -ti -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'

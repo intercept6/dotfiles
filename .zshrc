@@ -142,4 +142,14 @@ function ghq-fzf() {
 zle -N ghq-fzf
 bindkey "^]" ghq-fzf
 
-alias aws='docker run --rm -ti -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
+export GOPATH=$HOME/go
+export PATH="$PATH:$HOME/bin:$GOPATH/bin"
+export PATH="$PATH:$HOME/development/flutter/bin"
+
+if [ -e ~/.zsh/completions ]; then
+    fpath=(~/.zsh/completions $fpath)
+fi
+
+alias brew-up='brew update && brew upgrade && brew cleanup'
+eval "$(direnv hook zsh)"
+

@@ -56,7 +56,6 @@ zmodule zsh-users/zsh-autosuggestions
 
 zmodule eriner
 zmodule exa
-zmodule asdf
 zmodule fzf
 zmodule homebrew
 zmodule git-info

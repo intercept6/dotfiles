@@ -10,9 +10,7 @@
                                 "from": {
                                     "key_code": "left_control",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "optional": ["any"]
                                     }
                                 },
                                 "parameters": {
@@ -45,9 +43,7 @@
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
+                                        "mandatory": ["control"]
                                     }
                                 },
                                 "to": [
@@ -61,9 +57,7 @@
                                 "from": {
                                     "key_code": "n",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "control"
-                                        ]
+                                        "mandatory": ["control"]
                                     }
                                 },
                                 "to": [
@@ -82,9 +76,7 @@
                                 "from": {
                                     "key_code": "left_command",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "optional": ["any"]
                                     }
                                 },
                                 "parameters": {
@@ -112,9 +104,7 @@
                                 "from": {
                                     "key_code": "right_command",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
+                                        "optional": ["any"]
                                     }
                                 },
                                 "parameters": {

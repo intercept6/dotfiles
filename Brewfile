@@ -1,3 +1,12 @@
 brew "mkcert"
 brew "fzf"
 brew "ghq"
+brew "stow"
+brew "starship"
+
+cask "notion"
+cask "slack"
+cask "visual-studio-code"
+cask "discord"
+cask "scroll-reverser"
+cask "karabiner-elements"

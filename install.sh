@@ -17,4 +17,4 @@ if [ ! -d ~/.config ]; then
     mkdir ~/.config
 fi
 
-stow --verbose --dir ~/dotfiles/packages --target ~ zsh starship
+stow --verbose --dir ~/dotfiles/packages --target ~ zsh starship karabiner

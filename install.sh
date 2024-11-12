@@ -3,6 +3,7 @@
 set -e
 
 if [ ! -f /opt/homebrew/bin/brew ]; then
+    echo "Homebrew is not installed. Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 

@@ -3,6 +3,7 @@ brew "fzf"
 brew "ghq"
 brew "stow"
 brew "starship"
+brew "zsh-completions"
 
 cask "notion"
 cask "slack"

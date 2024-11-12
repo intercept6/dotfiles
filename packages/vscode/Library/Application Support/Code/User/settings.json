@@ -1,0 +1,92 @@
+{
+    "workbench.iconTheme": "catppuccin-macchiato",
+    // 製品アイコンのテーマ
+    "workbench.productIconTheme": "jetbrains-idea-product-icon-theme",
+    // 行の強調表示
+    "editor.renderLineHighlight": "all",
+    "editor.renderLineHighlightOnlyWhenFocus": true,
+    // フォントのサイズ
+    "editor.fontSize": 14,
+    // カーソルのスタイル
+    "editor.cursorStyle": "block",
+    // カーソルの点滅
+    "editor.cursorBlinking": "phase",
+    // カーソルのキャレットアニメーション
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    // 文字を折り返す
+    "editor.wordWrap": "on",
+    // エクスプローラーのインデント
+    "workbench.tree.indent": 24,
+    // レイアウトコントロールの非表示
+    "workbench.layoutControl.enabled": false,
+    "files.autoSave": "afterDelay",
+    "editor.codeActions.triggerOnFocusChange": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always",
+        "source.formatAll.terraform": "always",
+        "source.organizeLinkDefinitions": "always"
+    },
+    "editor.minimap.enabled": false,
+    "terminal.integrated.fontSize": 14,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[terraform]": {
+        "editor.defaultFormatter": "hashicorp.terraform"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.confirmSync": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[go]": {
+        "editor.defaultFormatter": "golang.go"
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/internal/mock/**.go": true
+    },
+    "search.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/mock/*.go": true
+    },
+    "hediet.vscode-drawio.theme": "atlas",
+    "redhat.telemetry.enabled": true,
+    "git.autofetch": true,
+    "dev.containers.defaultExtensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "eamodio.gitlens",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "go.toolsManagement.autoUpdate": true,
+    "hediet.vscode-drawio.resizeImages": null,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    }
+}

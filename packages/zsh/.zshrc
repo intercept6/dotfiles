@@ -1,5 +1,3 @@
-export LANG=ja_JP.UTF-8
-
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=30000
